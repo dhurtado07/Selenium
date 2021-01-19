@@ -1,0 +1,48 @@
+package test;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class Hello {
+	
+	static String browser;
+	static WebDriver driver;
+	// declaration and instantiation of objects/variables
+	//System.setProperty("webdriver.gecko.driver","C:\\geckodriver.exe");
+	//WebDriver driver = new FirefoxDriver();
+	//comment the above 2 lines and uncomment below 2 lines to use Chrome
+    public static void main(String []args)
+    {
+    	setBrowser();
+    	setBrowserConfig();
+    	runTest();
+    	
+    }
+    
+    public static void setBrowser() {
+    	browser="Chrome";
+    }
+    
+    public static void setBrowserConfig() {
+    	if(browser.contains("Firefox"))
+    	{
+    		System.setProperty("webdriver.gecko.driver", "C:\\geckodriver.exe");
+        	 driver = new FirefoxDriver();
+    	}
+    	else
+    	if(browser.contains("Chrome"))
+    	{
+    		System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe");
+    		 driver = new ChromeDriver();
+    	}
+    	
+    }
+    
+    public static void runTest() {
+    	driver.get("https://www.google.com");
+    	driver.close();
+    }
+    
+}
